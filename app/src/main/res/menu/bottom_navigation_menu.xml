@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/book_list"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="Books"></item>
+
+    <item
+        android:id="@+id/to_read"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="To read"></item>
+
+    <item
+        android:id="@+id/mybooks"
+        android:icon="@drawable/ic_launcher_foreground"
+        android:title="My books"></item>
+
+
+</menu>
