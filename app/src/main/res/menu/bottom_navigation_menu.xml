@@ -3,17 +3,17 @@
     <item
         android:id="@+id/book_list"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="Books"></item>
+        android:title="Livres"></item>
 
     <item
         android:id="@+id/to_read"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="To read"></item>
+        android:title="A lire"></item>
 
     <item
         android:id="@+id/mybooks"
         android:icon="@drawable/ic_launcher_foreground"
-        android:title="My books"></item>
+        android:title="Mes livres"></item>
 
 
 </menu>
