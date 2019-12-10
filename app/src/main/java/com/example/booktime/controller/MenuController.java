@@ -84,9 +84,7 @@ public class MenuController {
         List<Book> favoriteList = getFavoriteList();
         currentBook.setEst_favoris(false);
         for (int i = 0; i < favoriteList.size(); i++) {
-            System.out.println(favoriteList.get(i).getId() +"RRRRRRRRRRRRRRRRRRRRRRRRRRr"+currentBook.getId());
             if(favoriteList.get(i).getId().equals(currentBook.getId())){
-                System.out.println(favoriteList.get(i).getId() +"WWWWWWWWWWWWWWWWWWWWWWWWWWWW"+currentBook.getId());
                 favoriteList.remove(i);
                 saveFavoriteList(favoriteList);
             }
@@ -123,9 +121,7 @@ public class MenuController {
         List<Book> aLireList = getALireList();
         currentBook.setEst_a_lire(false);
         for (int i = 0; i < aLireList.size(); i++) {
-            System.out.println(aLireList.get(i).getId() +"RRRRRRRRRRRRRRRRRRRRRRRRRRr"+currentBook.getId());
             if(aLireList.get(i).getId().equals(currentBook.getId())){
-                System.out.println(aLireList.get(i).getId() +"WWWWWWWWWWWWWWWWWWWWWWWW"+currentBook.getId());
                 aLireList.remove(i);
                 saveALireList(aLireList);
             }

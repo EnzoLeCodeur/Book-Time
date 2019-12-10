@@ -30,6 +30,8 @@ public class BookTimeAdapter extends RecyclerView.Adapter<BookTimeAdapter.ViewHo
     private List<Book> aLL;
     private final OnFavoriteClickListener lF;
     private final OnALireClickListener lA;
+    private List<String> authors;
+    private String text = "";
 
     public interface OnALireClickListener {
         void onALireAdded(Book item);
@@ -113,7 +115,16 @@ public class BookTimeAdapter extends RecyclerView.Adapter<BookTimeAdapter.ViewHo
                 context.startActivity(randomIntent);
             }
         });
-        holder.txtFooter.setText(currentBook.getId());
+        authors = currentBook.getVolumeInfo().getAuthors();
+
+        if(authors != null) {
+            for(int i=0; i< authors.size(); i++) {
+                text = authors.get(i)+"\n";
+            }
+        } else {
+            text= "Auteur inconnu\n";
+        }
+        holder.txtFooter.setText(text);
 
         if(currentBook.getVolumeInfo().getImageLinks() != null) {
             Picasso.with(context).load(currentBook.getVolumeInfo().getImageLinks().getThumbnail()).into(holder.imgView);
@@ -121,9 +132,9 @@ public class BookTimeAdapter extends RecyclerView.Adapter<BookTimeAdapter.ViewHo
 
         if(fL != null) {
             for (int i = 0; i < fL.size(); i++) {
-                if (fL.get(i).getId() == currentBook.getId()) {
+                if (fL.get(i).getId().equals(currentBook.getId())) {
                     currentBook.setEst_favoris(true);
-                    holder.btnFavoris.setBackgroundColor(Color.BLUE);
+                    holder.btnFavoris.setText("♥");
                 }
             }
         }
@@ -132,11 +143,11 @@ public class BookTimeAdapter extends RecyclerView.Adapter<BookTimeAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 if (currentBook.getEst_favoris()) {
-                    holder.btnFavoris.setBackgroundColor(Color.RED);
+                    holder.btnFavoris.setText("favoris");
                     Toast.makeText(v.getContext(), currentBook.getVolumeInfo().getTitle() + " supprimé des favoris", Toast.LENGTH_SHORT).show();
                     lF.onFavoriteRemove(currentBook);
                 } else {
-                    holder.btnFavoris.setBackgroundColor(Color.BLUE);
+                    holder.btnFavoris.setText("♥");
                     Toast.makeText(v.getContext(), currentBook.getVolumeInfo().getTitle() + " ajouté aux favoris", Toast.LENGTH_SHORT).show();
                     lF.onFavoriteAdded(currentBook);
                 }
@@ -147,7 +158,7 @@ public class BookTimeAdapter extends RecyclerView.Adapter<BookTimeAdapter.ViewHo
             for (int i = 0; i < aLL.size(); i++) {
                 if (aLL.get(i).getId() == currentBook.getId()) {
                     currentBook.setEst_a_lire(true);
-                    holder.btnALire.setBackgroundColor(Color.BLUE);
+                    holder.btnALire.setText("☺");
                 }
             }
         }
@@ -156,11 +167,11 @@ public class BookTimeAdapter extends RecyclerView.Adapter<BookTimeAdapter.ViewHo
             @Override
             public void onClick(View v) {
                 if (currentBook.getEst_a_lire()) {
-                    holder.btnALire.setBackgroundColor(Color.RED);
+                    holder.btnALire.setText("à lire");
                     Toast.makeText(v.getContext(), currentBook.getVolumeInfo().getTitle() + " supprimé des livres à lire", Toast.LENGTH_SHORT).show();
                     lA.onALireRemove(currentBook);
                 } else {
-                    holder.btnALire.setBackgroundColor(Color.BLUE);
+                    holder.btnALire.setText("☺");
                     Toast.makeText(v.getContext(), currentBook.getVolumeInfo().getTitle() + " ajouté aux livres à lire", Toast.LENGTH_SHORT).show();
                     lA.onALireAdded(currentBook);
                 }
