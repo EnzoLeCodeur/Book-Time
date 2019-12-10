@@ -1,10 +1,8 @@
 # Book-Time
 
-## Description du projet
+"Book Time"_ est une application mobile "bibliothèque". Cet application est codée en Java et utilise l'architecture MVC.
 
-_Book Time_ est une application mobile "bibliothèque". Cet application est codée en Java et utilise l'architecture MVC.
-
-## Consignes et fonctionnalités
+## Spécificités techniques
 
 - 2 activités et 3 fragments
 - RecyclerView
